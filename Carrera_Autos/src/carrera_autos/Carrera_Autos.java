@@ -9,13 +9,6 @@ package carrera_autos;
  * @author DELL
  */
 public class Carrera_Autos {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println("Hola");
-    }
+    
     
 }
