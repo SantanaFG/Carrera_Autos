@@ -22,36 +22,37 @@ public class Carrera_Autos extends Thread{
 
     @Override
     public void run() {
-        int rayo = 0;
-        int ramon = 0;
-        int storm = 0;
-        int francesco = 0;
+        int peach = 0;
+        int yoshi = 0;
+        int mario = 0;
+        int kong = 0;
+        int numeroAleatorio;
         while(true){
             try{
-                sleep((int)(Math.random() * 1000));
-                rayo = auto.getRayoMacqueen().getLocation().x;
-                ramon= auto.getRamon().getLocation().x;
-                storm = auto.getStorm().getLocation().x;
-                francesco = auto.getFrancesco().getLocation().x;
-                if (rayo < auto.getMeta().getLocation().x-120 && ramon < auto.getMeta().getLocation().x-120 && storm < auto.getMeta().getLocation().x-120 && francesco < auto.getMeta().getLocation().x-120) {
-                    icono.setLocation(icono.getLocation().x + 10, icono.getLocation().y);
+                numeroAleatorio = numAleatorio(1,10);
+                sleep(100);
+                peach = auto.getPeach().getLocation().x;
+                yoshi= auto.getYoshi().getLocation().x;
+                mario = auto.getMario().getLocation().x;
+                kong = auto.getDK().getLocation().x;
+                if (peach < auto.getMeta().getLocation().x-120 && yoshi < auto.getMeta().getLocation().x-120 && mario < auto.getMeta().getLocation().x-120 && kong < auto.getMeta().getLocation().x-120) {
+                    icono.setLocation(icono.getLocation().x + numeroAleatorio, icono.getLocation().y);
                     auto.repaint();
                 }else{
                     break;
-                }
-                
+                }                 
             }catch(Exception e){
                 System.out.println("");
             }
             if (icono.getLocation().x >= auto.getMeta().getLocation().x-120) {
-                if (rayo > ramon && rayo > storm && rayo > francesco) {
-                    JOptionPane.showMessageDialog(null,"Gano Rayo");
-                }else if (ramon > rayo && ramon > storm && ramon > francesco) {
-                    JOptionPane.showMessageDialog(null,"Gano Ramon");
-                }else if (storm > rayo && storm > ramon && storm > francesco) {
-                    JOptionPane.showMessageDialog(null,"Gano Storm");
-                }else if (francesco > rayo && francesco > ramon && francesco > storm) {
-                    JOptionPane.showMessageDialog(null,"Gano Francesco");
+                if (peach > yoshi && peach > mario && peach > kong) {
+                    JOptionPane.showMessageDialog(null,"Gano Peach");
+                }else if (yoshi > peach && yoshi > mario && yoshi > kong) {
+                    JOptionPane.showMessageDialog(null,"Gano Yoshi");
+                }else if (mario > peach && mario > yoshi && mario > kong) {
+                    JOptionPane.showMessageDialog(null,"Gano MArio");
+                }else if (kong > peach && kong > yoshi && kong > mario) {
+                    JOptionPane.showMessageDialog(null,"Gano Don King Kong");
                 }else{
                     JOptionPane.showMessageDialog(null,"Empate");
                 }
@@ -59,6 +60,9 @@ public class Carrera_Autos extends Thread{
         }        
     }
     
-    
+    public static int numAleatorio(int minimo, int maximo){
+        int num = (int)Math.floor(Math.random()*(maximo-minimo+1)-(minimo));
+        return num;
+    }
         
 }
