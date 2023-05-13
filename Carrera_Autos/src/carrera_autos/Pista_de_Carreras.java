@@ -32,6 +32,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         BanderaD = new javax.swing.JLabel();
         Bandera_Iz = new javax.swing.JLabel();
         Titulo = new javax.swing.JLabel();
+        Meta = new javax.swing.JLabel();
         Rayo_Macqueen = new javax.swing.JLabel();
         Pista1 = new javax.swing.JLabel();
         Ramon = new javax.swing.JLabel();
@@ -55,6 +56,10 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
         getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 810, 81));
+
+        Meta.setBackground(new java.awt.Color(255, 255, 102));
+        Meta.setOpaque(true);
+        getContentPane().add(Meta, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, 10, 400));
 
         Rayo_Macqueen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Rayo Macqueen.png"))); // NOI18N
         getContentPane().add(Rayo_Macqueen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 100, 80));
@@ -84,7 +89,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         jButton1.setText("START");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 517, -1, -1));
 
-        jButton2.setText("STOP");
+        jButton2.setText("RESTART");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -142,6 +147,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     private javax.swing.JLabel Bandera_Iz;
     private javax.swing.JLabel Francesco;
     private javax.swing.JLabel Jackso_Storm;
+    private javax.swing.JLabel Meta;
     private javax.swing.JLabel Pista1;
     private javax.swing.JLabel Pista2;
     private javax.swing.JLabel Pista3;
