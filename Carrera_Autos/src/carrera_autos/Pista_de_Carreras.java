@@ -4,6 +4,8 @@
  */
 package carrera_autos;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author DELL
@@ -16,10 +18,26 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
      */
     public Pista_de_Carreras() {
         initComponents();
-        setLocationRelativeTo(this);
-        
+        setLocationRelativeTo(this);        
     }
 
+    public JLabel getRayoMacqueen(){
+        return Rayo_Macqueen;
+    }
+    public JLabel getRamon(){
+        return Ramon;
+    }
+    public JLabel getStorm(){
+        return Jackso_Storm;
+    }
+    public JLabel getFrancesco(){
+        return Francesco;
+    }
+    
+    public JLabel getMeta(){
+        return Meta;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +59,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         Francesco = new javax.swing.JLabel();
         Pista3 = new javax.swing.JLabel();
         Pista4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jBStart = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,16 +87,16 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         getContentPane().add(Pista1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 820, 100));
 
         Ramon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Ramon.png"))); // NOI18N
-        getContentPane().add(Ramon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
+        getContentPane().add(Ramon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 100, 80));
 
         Jackso_Storm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Jackson Storm.png"))); // NOI18N
-        getContentPane().add(Jackso_Storm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 100, 60));
+        getContentPane().add(Jackso_Storm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 100, 80));
 
         Pista2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.png"))); // NOI18N
         getContentPane().add(Pista2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 820, 100));
 
         Francesco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Francesco Bernoulli.png"))); // NOI18N
-        getContentPane().add(Francesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
+        getContentPane().add(Francesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 100, 80));
 
         Pista3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.png"))); // NOI18N
         getContentPane().add(Pista3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 820, 100));
@@ -86,8 +104,13 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         Pista4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.png"))); // NOI18N
         getContentPane().add(Pista4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 820, 100));
 
-        jButton1.setText("START");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 517, -1, -1));
+        jBStart.setText("START");
+        jBStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBStartActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 517, -1, -1));
 
         jButton2.setText("RESTART");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +126,23 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jBStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBStartActionPerformed
+        Rayo_Macqueen.setLocation(0,Rayo_Macqueen.getLocation().y);
+        Ramon.setLocation(0,Ramon.getLocation().y);
+        Jackso_Storm.setLocation(0,Jackso_Storm.getLocation().y);
+        Francesco.setLocation(0,Francesco.getLocation().y);
+        
+        Carrera_Autos auto1 = new Carrera_Autos(Rayo_Macqueen, this);
+        Carrera_Autos auto2 = new Carrera_Autos(Ramon, this);
+        Carrera_Autos auto3 = new Carrera_Autos(Jackso_Storm, this);
+        Carrera_Autos auto4 = new Carrera_Autos(Francesco, this);
+        
+        auto1.start();
+        auto2.start();
+        auto3.start();
+        auto4.start();
+    }//GEN-LAST:event_jBStartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,7 +195,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     private javax.swing.JLabel Ramon;
     private javax.swing.JLabel Rayo_Macqueen;
     private javax.swing.JLabel Titulo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBStart;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }
