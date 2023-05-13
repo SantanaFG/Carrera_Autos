@@ -9,7 +9,6 @@ package carrera_autos;
  * @author DELL
  */
 public class Pista_de_Carreras extends javax.swing.JFrame {
-
     
     /**
      * Creates new form Pista_de_Carreras
@@ -17,7 +16,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     public Pista_de_Carreras() {
         initComponents();
         setLocationRelativeTo(this);
-        
+
     }
 
     /**
@@ -87,6 +86,11 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         getContentPane().add(Pista4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 820, 100));
 
         jButton1.setText("START");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 517, -1, -1));
 
         jButton2.setText("RESTART");
@@ -103,6 +107,11 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
