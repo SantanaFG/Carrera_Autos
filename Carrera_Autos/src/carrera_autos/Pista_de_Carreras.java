@@ -10,12 +10,14 @@ package carrera_autos;
  */
 public class Pista_de_Carreras extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form Pista_de_Carreras
      */
     public Pista_de_Carreras() {
         initComponents();
         setLocationRelativeTo(this);
+        
     }
 
     /**
@@ -30,9 +32,12 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         BanderaD = new javax.swing.JLabel();
         Bandera_Iz = new javax.swing.JLabel();
         Titulo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        Rayo_Macqueen = new javax.swing.JLabel();
         Pista1 = new javax.swing.JLabel();
+        Ramon = new javax.swing.JLabel();
+        Jackso_Storm = new javax.swing.JLabel();
         Pista2 = new javax.swing.JLabel();
+        Francesco = new javax.swing.JLabel();
         Pista3 = new javax.swing.JLabel();
         Pista4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -51,20 +56,29 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
         getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 810, 81));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Rayo_Mcqueen.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 100, 50));
+        Rayo_Macqueen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Rayo Macqueen.png"))); // NOI18N
+        getContentPane().add(Rayo_Macqueen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 100, 80));
 
-        Pista1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        Pista1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.png"))); // NOI18N
         Pista1.setOpaque(true);
         getContentPane().add(Pista1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 820, 100));
 
-        Pista2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        Ramon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Ramon.png"))); // NOI18N
+        getContentPane().add(Ramon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
+
+        Jackso_Storm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Jackson Storm.png"))); // NOI18N
+        getContentPane().add(Jackso_Storm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 100, 60));
+
+        Pista2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.png"))); // NOI18N
         getContentPane().add(Pista2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 820, 100));
 
-        Pista3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        Francesco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Francesco Bernoulli.png"))); // NOI18N
+        getContentPane().add(Francesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
+
+        Pista3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.png"))); // NOI18N
         getContentPane().add(Pista3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 820, 100));
 
-        Pista4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        Pista4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.png"))); // NOI18N
         getContentPane().add(Pista4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 820, 100));
 
         jButton1.setText("START");
@@ -126,13 +140,16 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BanderaD;
     private javax.swing.JLabel Bandera_Iz;
+    private javax.swing.JLabel Francesco;
+    private javax.swing.JLabel Jackso_Storm;
     private javax.swing.JLabel Pista1;
     private javax.swing.JLabel Pista2;
     private javax.swing.JLabel Pista3;
     private javax.swing.JLabel Pista4;
+    private javax.swing.JLabel Ramon;
+    private javax.swing.JLabel Rayo_Macqueen;
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
