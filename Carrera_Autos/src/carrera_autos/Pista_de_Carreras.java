@@ -43,51 +43,55 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         Pista4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BanderaD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Banderas.png"))); // NOI18N
-        getContentPane().add(BanderaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
+        getContentPane().add(BanderaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
 
         Bandera_Iz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Banderas.png"))); // NOI18N
-        getContentPane().add(Bandera_Iz, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
+        getContentPane().add(Bandera_Iz, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
 
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
-        getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 810, 81));
+        Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_1.png"))); // NOI18N
+        getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 810, 81));
 
         Meta.setBackground(new java.awt.Color(255, 255, 102));
         Meta.setOpaque(true);
-        getContentPane().add(Meta, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, 10, 400));
+        getContentPane().add(Meta, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 100, 10, 400));
 
-        Rayo_Macqueen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Rayo Macqueen.png"))); // NOI18N
-        getContentPane().add(Rayo_Macqueen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 100, 80));
+        Rayo_Macqueen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/peachsprite.png"))); // NOI18N
+        getContentPane().add(Rayo_Macqueen, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 130, 90));
 
         Pista1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.png"))); // NOI18N
         Pista1.setOpaque(true);
-        getContentPane().add(Pista1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 820, 100));
+        getContentPane().add(Pista1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 820, 100));
 
-        Ramon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Ramon.png"))); // NOI18N
-        getContentPane().add(Ramon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
+        Ramon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/yoshisprite.png"))); // NOI18N
+        getContentPane().add(Ramon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 130, 90));
 
-        Jackso_Storm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Jackson Storm.png"))); // NOI18N
-        getContentPane().add(Jackso_Storm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 100, 60));
+        Jackso_Storm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mariosprite.png"))); // NOI18N
+        getContentPane().add(Jackso_Storm, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 120, 90));
 
         Pista2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.png"))); // NOI18N
-        getContentPane().add(Pista2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 820, 100));
+        getContentPane().add(Pista2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 820, 100));
 
-        Francesco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Francesco Bernoulli.png"))); // NOI18N
-        getContentPane().add(Francesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
+        Francesco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dksprite.png"))); // NOI18N
+        getContentPane().add(Francesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, 90));
 
         Pista3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.png"))); // NOI18N
-        getContentPane().add(Pista3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 820, 100));
+        getContentPane().add(Pista3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 820, 100));
 
         Pista4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.png"))); // NOI18N
-        getContentPane().add(Pista4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 820, 100));
+        getContentPane().add(Pista4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 820, 100));
 
         jButton1.setText("START");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 517, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 520, -1, -1));
 
         jButton2.setText("RESTART");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +99,19 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 517, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 520, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/peach.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 80, 80));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/yoshi.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, 80));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mario.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 80, 80));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dk.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 80, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,5 +173,9 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
