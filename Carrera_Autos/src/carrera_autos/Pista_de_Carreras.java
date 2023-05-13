@@ -15,6 +15,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
      */
     public Pista_de_Carreras() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**
@@ -29,31 +30,45 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         BanderaD = new javax.swing.JLabel();
         Bandera_Iz = new javax.swing.JLabel();
         Titulo = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        Pista1 = new javax.swing.JLabel();
+        Pista2 = new javax.swing.JLabel();
+        Pista3 = new javax.swing.JLabel();
+        Pista4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BanderaD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Banderas.png"))); // NOI18N
+        getContentPane().add(BanderaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
 
         Bandera_Iz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Banderas.png"))); // NOI18N
+        getContentPane().add(Bandera_Iz, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
 
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pngwing.com.png"))); // NOI18N
+        Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 810, 81));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Rayo_Mcqueen.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 100, 50));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        Pista1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        Pista1.setOpaque(true);
+        getContentPane().add(Pista1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 820, 100));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        Pista2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        getContentPane().add(Pista2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 820, 100));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        Pista3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        getContentPane().add(Pista3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 820, 100));
+
+        Pista4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pista.jpg"))); // NOI18N
+        getContentPane().add(Pista4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 820, 100));
 
         jButton1.setText("START");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 517, -1, -1));
 
         jButton2.setText("STOP");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -61,62 +76,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(204, 204, 204)
-                                .addComponent(Bandera_Iz)
-                                .addGap(210, 210, 210)
-                                .addComponent(BanderaD))
-                            .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(104, 104, 104)
-                            .addComponent(jButton1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2)
-                            .addGap(93, 93, 93))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Bandera_Iz)
-                            .addComponent(BanderaD))))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel2)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel6)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 517, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,6 +111,9 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Pista_de_Carreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -163,12 +126,13 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BanderaD;
     private javax.swing.JLabel Bandera_Iz;
+    private javax.swing.JLabel Pista1;
+    private javax.swing.JLabel Pista2;
+    private javax.swing.JLabel Pista3;
+    private javax.swing.JLabel Pista4;
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
