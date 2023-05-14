@@ -4,6 +4,10 @@
  */
 package carrera_autos;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /**
@@ -12,6 +16,7 @@ import javax.swing.JLabel;
  */
 public class Pista_de_Carreras extends javax.swing.JFrame {
     
+    MouseListener click;
     /**
      * Creates new form Pista_de_Carreras
      */
@@ -57,7 +62,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         Pista3 = new javax.swing.JLabel();
         Pista4 = new javax.swing.JLabel();
         jBStart = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBPause = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -115,13 +120,13 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         });
         getContentPane().add(jBStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 520, -1, -1));
 
-        jButton2.setText("PAUSE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBPause.setText("PAUSE");
+        jBPause.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBPauseActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 520, -1, -1));
+        getContentPane().add(jBPause, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 520, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/peach.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 80, 80));
@@ -138,9 +143,9 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jBPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPauseActionPerformed
+
+    }//GEN-LAST:event_jBPauseActionPerformed
 
     private void jBStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBStartActionPerformed
         Peach.setLocation(90,Peach.getLocation().y);
@@ -157,6 +162,38 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         auto2.start();
         auto3.start();
         auto4.start();
+        
+        click = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    auto1.interrupt();
+                    auto2.interrupt();
+                    auto3.interrupt();
+                    auto4.interrupt();
+                } catch (Exception ex) {
+                    Logger.getLogger(Pista_de_Carreras.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        };
+        jBPause.addMouseListener(click);
     }//GEN-LAST:event_jBStartActionPerformed
 
     /**
@@ -210,8 +247,8 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     private javax.swing.JLabel Pista4;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel Yoshi;
+    private javax.swing.JButton jBPause;
     private javax.swing.JButton jBStart;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
