@@ -5,36 +5,50 @@
 package carrera_autos;
 
 import javax.swing.JLabel;
+import javax.swing.Timer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author DELL
  */
 public class Pista_de_Carreras extends javax.swing.JFrame {
-    
+
+    static int hora = 0, minutos = 0, segundo = 0, milise = 0;
+    static boolean inicio = true;
+    boolean proceso = false;
+
     /**
      * Creates new form Pista_de_Carreras
      */
     public Pista_de_Carreras() {
         initComponents();
-        setLocationRelativeTo(this);      
+        setLocationRelativeTo(this);
+        ///cronometro   
+
     }
-        
-    public JLabel getPeach(){
+
+    public JLabel getPeach() {
         return Peach;
     }
-    public JLabel getYoshi(){
+
+    public JLabel getYoshi() {
         return Yoshi;
     }
-    public JLabel getMario(){
+
+    public JLabel getMario() {
         return Mario;
     }
-    public JLabel getDK(){
+
+    public JLabel getDK() {
         return DK;
     }
-    public JLabel getMeta(){
+
+    public JLabel getMeta() {
         return Meta;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,6 +76,10 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        tiempo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        ini = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Carrera de Autos");
@@ -135,6 +153,29 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dk.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 80, 80));
 
+        tiempo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        tiempo.setText("jLabel5");
+        getContentPane().add(tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 501, 130, 40));
+
+        jButton1.setText("detener");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 540, -1, -1));
+
+        ini.setText("inicio");
+        ini.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ini, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 540, -1, -1));
+
+        jButton3.setText("pausa");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 540, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -143,21 +184,46 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jBStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBStartActionPerformed
-        Peach.setLocation(90,Peach.getLocation().y);
-        Yoshi.setLocation(90,Yoshi.getLocation().y);
-        Mario.setLocation(90,Mario.getLocation().y);
-        DK.setLocation(90,DK.getLocation().y);
-        
+        Peach.setLocation(90, Peach.getLocation().y);
+        Yoshi.setLocation(90, Yoshi.getLocation().y);
+        Mario.setLocation(90, Mario.getLocation().y);
+        DK.setLocation(90, DK.getLocation().y);
+
         Carrera_Autos auto1 = new Carrera_Autos(Peach, this);
         Carrera_Autos auto2 = new Carrera_Autos(Yoshi, this);
         Carrera_Autos auto3 = new Carrera_Autos(Mario, this);
         Carrera_Autos auto4 = new Carrera_Autos(DK, this);
-        
+
         auto1.start();
         auto2.start();
         auto3.start();
         auto4.start();
+
     }//GEN-LAST:event_jBStartActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (proceso == true) {
+            inicio = false;
+            proceso = false;
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void iniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniActionPerformed
+        // TODO add your handling code here:
+        if (proceso == false) {
+            inicio = true;
+            proceso = true;
+            cronometro();
+        }
+    }//GEN-LAST:event_iniActionPerformed
+    public void cronometro() {
+        if (inicio == true) {
+            System.out.println("inicia cromonemtro");
+            Cronometro crono = new Cronometro(tiempo);
+            crono.start();
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -166,7 +232,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -210,11 +276,15 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     private javax.swing.JLabel Pista4;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel Yoshi;
+    private javax.swing.JButton ini;
     private javax.swing.JButton jBStart;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel tiempo;
     // End of variables declaration//GEN-END:variables
 }
