@@ -15,7 +15,7 @@ public class Carrera_Autos extends Thread {
 
     private JLabel icono;
     Pista_de_Carreras auto;
- private boolean ite;
+    private boolean ite;
 
     public Carrera_Autos(JLabel icono, Pista_de_Carreras auto) {
         this.icono = icono;
@@ -29,10 +29,7 @@ public class Carrera_Autos extends Thread {
         int mario = 0;
         int kong = 0;
         int numeroAleatorio;
-        auto.getPeach().setLocation(50, 110);
-        auto.getYoshi().setLocation(55, 210);
-        auto.getMario().setLocation(55, 310);
-        auto.getDK().setLocation(55, 410);
+        
         while (ite) {
             try {
                 numeroAleatorio = numAleatorio(1, 10);
@@ -74,6 +71,5 @@ public class Carrera_Autos extends Thread {
     public void ini(){
     ite=true;
     new Thread(this).start();
-    
     }  
 }

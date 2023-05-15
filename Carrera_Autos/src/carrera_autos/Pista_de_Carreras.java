@@ -19,8 +19,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  * @author DELL
  */
 public class Pista_de_Carreras extends javax.swing.JFrame {
-   
-    
+
     /**
      * Creates new form Pista_de_Carreras
      */
@@ -36,7 +35,6 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     static int hora = 0, minutos = 0, segundo = 0, milise = 0;
     static boolean inicio = true;
     boolean proceso = false;
-
 
     public Pista_de_Carreras() {
         initComponents();
@@ -206,26 +204,17 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         moverYoshi = new MoverLabel(Yoshi, "Yoshi", ordenLlegada);
         moverMario = new MoverLabel(Mario, "Mario", ordenLlegada);
         moverDK = new MoverLabel(DK, "Don Ko", ordenLlegada);
-        
-//
-//        Thread threadPeach = new Thread(moverPeach);
-//        Thread threadYoshi = new Thread(moverYoshi);
-//        Thread threadMario = new Thread(moverMario);
-//        Thread threadDK = new Thread(moverDK);
-//
+
+        Thread threadPeach = new Thread(moverPeach);
+        Thread threadYoshi = new Thread(moverYoshi);
+        Thread threadMario = new Thread(moverMario);
+        Thread threadDK = new Thread(moverDK);
+
 //         //Iniciar los hilos
-//        threadPeach.start();
-//        threadYoshi.start();
-//        threadMario.start();
-//        threadDK.start();
-        Carrera_Autos car1=new Carrera_Autos(Peach,this);
-        Carrera_Autos car2=new Carrera_Autos(Yoshi,this);
-        Carrera_Autos car3=new Carrera_Autos(Mario,this);
-        Carrera_Autos car4=new Carrera_Autos(DK,this);
-        car1.ini();
-        car2.ini();
-        car3.ini();
-        car4.ini();
+        threadPeach.start();
+        threadYoshi.start();
+        threadMario.start();
+        threadDK.start();
         if (proceso == false) {
             inicio = true;
             proceso = true;
@@ -314,14 +303,14 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
                     // Actualizar la posición según la velocidad actual
                     posX += velocidad;
                     label.setLocation((int) posX, (int) posY);
-
+                    
                     // Repintar el label para mostrar su nueva posición
                     label.repaint();
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
             }
-
+            
             // Mostrar el mensaje indicando qué label llegó primero
             synchronized (ordenLlegada) {
                 ordenLlegada.add(nombre);
@@ -345,12 +334,11 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
                 }
                 mensaje.append(posicion).append(". ").append(ordenLlegada.get(i)).append("\n");
             }
-            if (proceso == true) {
-                inicio = false;
-                proceso = false;
-            }
+            Peach.setLocation(85, 110);
+            Yoshi.setLocation(85, 210);
+            Mario.setLocation(85, 310);
+            DK.setLocation(85, 410);
             JOptionPane.showMessageDialog(rootPane, mensaje.toString());
-
         }
 
         private double generarVelocidad() {
@@ -443,6 +431,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
             crono.start();
         }
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BanderaD;
     private javax.swing.JLabel Bandera_Iz;
