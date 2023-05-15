@@ -21,11 +21,11 @@ public class Cronometro extends Thread {
         this.cron = tiempo;
     }
 
-    public void run() {
+    public void run() {      
         int x = 0;
         try {
             do {
-                Thread.sleep(1000);
+                Thread.sleep(100);
                 ejecutarcronometro(x);
                 x++;
             } while (Pista_de_Carreras.inicio);
@@ -35,7 +35,7 @@ public class Cronometro extends Thread {
     }
 
     public void ejecutarcronometro(int x) {
-        
+
         Pista_de_Carreras.segundo++;
         if (Pista_de_Carreras.segundo > 59) {
             Pista_de_Carreras.segundo = 0;
@@ -45,7 +45,7 @@ public class Cronometro extends Thread {
             Pista_de_Carreras.minutos = 0;
             Pista_de_Carreras.hora++;
         }
-        
+
         String txtse = "", txtmin = "", txthora = "";
         if (Pista_de_Carreras.segundo < 10) {
             txtse = "0" + Pista_de_Carreras.segundo;
@@ -65,5 +65,11 @@ public class Cronometro extends Thread {
         String reloj = txthora + ":" + txtmin + ":" + txtse + "";
         cron.setText(reloj);
         System.out.println(x + " - " + Thread.currentThread().getName());
+    }
+
+    public void reiniciar() {
+        Pista_de_Carreras.segundo=0;
+        Pista_de_Carreras.hora = 0;
+        Pista_de_Carreras.minutos=0;
     }
 }

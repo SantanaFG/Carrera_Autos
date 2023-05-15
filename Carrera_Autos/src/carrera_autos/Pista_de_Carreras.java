@@ -4,29 +4,46 @@
  */
 package carrera_autos;
 
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Random;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
  *
  * @author DELL
  */
 public class Pista_de_Carreras extends javax.swing.JFrame {
+   
+    
+    /**
+     * Creates new form Pista_de_Carreras
+     */
+    private Timer timer; // OBJETO DE TIMER PARA ACTUALIZAR EL TIEMPO
+    private long startTime; // VARIABLE DE TIPO LONG PARA GUARDAR EL TIEMPO DE INICIO
+    private long tiempoTranscurrido;// VARIABLE DE TIPO LONG PARA GUARDAR EL TIEMPO TRANSCURRIDO
+    private Thread cronometroThread;
+    private MoverLabel moverPeach;
+    private MoverLabel moverYoshi;
+    private MoverLabel moverMario;
+    private MoverLabel moverDK;
 
     static int hora = 0, minutos = 0, segundo = 0, milise = 0;
     static boolean inicio = true;
     boolean proceso = false;
 
-    /**
-     * Creates new form Pista_de_Carreras
-     */
+
     public Pista_de_Carreras() {
         initComponents();
+        jInternalFrame1.setBorder(null);
+        BasicInternalFrameUI bui = (BasicInternalFrameUI) this.jInternalFrame1.getUI();
+        bui.setNorthPane(null);
         setLocationRelativeTo(this);
-        ///cronometro   
-
     }
 
     public JLabel getPeach() {
@@ -47,6 +64,12 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
 
     public JLabel getMeta() {
         return Meta;
+    }
+
+    public void reiniciar() {
+        Pista_de_Carreras.segundo = 0;
+        Pista_de_Carreras.hora = 0;
+        Pista_de_Carreras.minutos = 0;
     }
 
     /**
@@ -76,10 +99,8 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
         tiempo = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        ini = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Carrera de Autos");
@@ -153,28 +174,23 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dk.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 80, 80));
 
+        jInternalFrame1.setVisible(true);
+
         tiempo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        tiempo.setText("jLabel5");
-        getContentPane().add(tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 501, 130, 40));
+        tiempo.setText("jLabel6");
 
-        jButton1.setText("detener");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 540, -1, -1));
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
-        ini.setText("inicio");
-        ini.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iniActionPerformed(evt);
-            }
-        });
-        getContentPane().add(ini, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 540, -1, -1));
-
-        jButton3.setText("pausa");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 540, -1, -1));
+        getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -184,46 +200,38 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jBStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBStartActionPerformed
-        Peach.setLocation(90, Peach.getLocation().y);
-        Yoshi.setLocation(90, Yoshi.getLocation().y);
-        Mario.setLocation(90, Mario.getLocation().y);
-        DK.setLocation(90, DK.getLocation().y);
-
-        Carrera_Autos auto1 = new Carrera_Autos(Peach, this);
-        Carrera_Autos auto2 = new Carrera_Autos(Yoshi, this);
-        Carrera_Autos auto3 = new Carrera_Autos(Mario, this);
-        Carrera_Autos auto4 = new Carrera_Autos(DK, this);
-
-        auto1.start();
-        auto2.start();
-        auto3.start();
-        auto4.start();
-
-    }//GEN-LAST:event_jBStartActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        if (proceso == true) {
-            inicio = false;
-            proceso = false;
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void iniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniActionPerformed
-        // TODO add your handling code here:
+        ArrayList<String> ordenLlegada = new ArrayList<>();
+        reiniciar();
+        moverPeach = new MoverLabel(Peach, "Peach", ordenLlegada);
+        moverYoshi = new MoverLabel(Yoshi, "Yoshi", ordenLlegada);
+        moverMario = new MoverLabel(Mario, "Mario", ordenLlegada);
+        moverDK = new MoverLabel(DK, "Don Ko", ordenLlegada);
+        
+//
+//        Thread threadPeach = new Thread(moverPeach);
+//        Thread threadYoshi = new Thread(moverYoshi);
+//        Thread threadMario = new Thread(moverMario);
+//        Thread threadDK = new Thread(moverDK);
+//
+//         //Iniciar los hilos
+//        threadPeach.start();
+//        threadYoshi.start();
+//        threadMario.start();
+//        threadDK.start();
+        Carrera_Autos car1=new Carrera_Autos(Peach,this);
+        Carrera_Autos car2=new Carrera_Autos(Yoshi,this);
+        Carrera_Autos car3=new Carrera_Autos(Mario,this);
+        Carrera_Autos car4=new Carrera_Autos(DK,this);
+        car1.ini();
+        car2.ini();
+        car3.ini();
+        car4.ini();
         if (proceso == false) {
             inicio = true;
             proceso = true;
             cronometro();
         }
-    }//GEN-LAST:event_iniActionPerformed
-    public void cronometro() {
-        if (inicio == true) {
-            System.out.println("inicia cromonemtro");
-            Cronometro crono = new Cronometro(tiempo);
-            crono.start();
-        }
-    }
+    }//GEN-LAST:event_jBStartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,7 +240,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -254,6 +262,18 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -263,6 +283,166 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         });
     }
 
+    private class MoverLabel implements Runnable {
+
+        private final JLabel label;
+        private double velocidad;
+        private String nombre;
+        private ArrayList<String> ordenLlegada;
+
+        public MoverLabel(JLabel label, String nombre, ArrayList<String> ordenLlegada) {
+            this.label = label;
+            this.nombre = nombre;
+            this.velocidad = generarVelocidad();
+            this.ordenLlegada = ordenLlegada;
+        }
+
+        @Override
+        public void run() {
+            double posX = label.getLocation().getX(); // Posición inicial en el eje X
+            double posY = label.getLocation().getY(); // Posición en el eje Y
+
+            double finalX = 800; // Valor final en el eje X
+
+            while (posX < finalX) {
+                try {
+                    Thread.sleep(10); // Ajusta el tiempo de espera según tus necesidades
+
+                    // Generar una velocidad aleatoria en cada iteración
+                    double velocidad = 0.5 + (3.5 - 0.5) * Math.random(); // Velocidad aleatoria entre 0.5 y 3.5
+
+                    // Actualizar la posición según la velocidad actual
+                    posX += velocidad;
+                    label.setLocation((int) posX, (int) posY);
+
+                    // Repintar el label para mostrar su nueva posición
+                    label.repaint();
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+
+            // Mostrar el mensaje indicando qué label llegó primero
+            synchronized (ordenLlegada) {
+                ordenLlegada.add(nombre);
+            }
+            StringBuilder mensaje = new StringBuilder();
+            for (int i = 0; i < ordenLlegada.size(); i++) {
+                String posicion;
+                switch (i + 1) {
+                    case 1:
+                        posicion = "1st";
+                        break;
+                    case 2:
+                        posicion = "2nd";
+                        break;
+                    case 3:
+                        posicion = "3rd";
+                        break;
+                    default:
+                        posicion = (i + 1) + "th";
+                        break;
+                }
+                mensaje.append(posicion).append(". ").append(ordenLlegada.get(i)).append("\n");
+            }
+            if (proceso == true) {
+                inicio = false;
+                proceso = false;
+            }
+            JOptionPane.showMessageDialog(rootPane, mensaje.toString());
+
+        }
+
+        private double generarVelocidad() {
+            double velocidad;
+            HashSet<Double> velocidadesPrevias = obtenerVelocidadesPrevias();
+
+            do {
+                velocidad = 0.5 + (2.5 - 0.5) * new Random().nextDouble(); // Velocidad aleatoria entre 0.5 y 2.5
+            } while (velocidadesPrevias.contains(velocidad) || existeVelocidadRepetida(velocidad));
+
+            return velocidad;
+        }
+
+        private boolean existeVelocidadRepetida(double velocidad) {
+            int count = 0;
+
+            if (moverPeach != null && moverPeach.getVelocidad() == velocidad) {
+                count++;
+            }
+            if (moverYoshi != null && moverYoshi.getVelocidad() == velocidad) {
+                count++;
+            }
+            if (moverMario != null && moverMario.getVelocidad() == velocidad) {
+                count++;
+            }
+            if (moverDK != null && moverDK.getVelocidad() == velocidad) {
+                count++;
+            }
+
+            return count > 1;
+        }
+
+        private HashSet<Double> obtenerVelocidadesPrevias() {
+            HashSet<Double> velocidadesPrevias = new HashSet<>();
+
+            if (this == moverPeach) {
+                if (moverYoshi != null) {
+                    velocidadesPrevias.add(moverYoshi.getVelocidad());
+                }
+                if (moverMario != null) {
+                    velocidadesPrevias.add(moverMario.getVelocidad());
+                }
+                if (moverDK != null) {
+                    velocidadesPrevias.add(moverDK.getVelocidad());
+                }
+            } else if (this == moverYoshi) {
+                if (moverPeach != null) {
+                    velocidadesPrevias.add(moverPeach.getVelocidad());
+                }
+                if (moverMario != null) {
+                    velocidadesPrevias.add(moverMario.getVelocidad());
+                }
+                if (moverDK != null) {
+                    velocidadesPrevias.add(moverDK.getVelocidad());
+                }
+            } else if (this == moverMario) {
+                if (moverPeach != null) {
+                    velocidadesPrevias.add(moverPeach.getVelocidad());
+                }
+                if (moverYoshi != null) {
+                    velocidadesPrevias.add(moverYoshi.getVelocidad());
+                }
+                if (moverDK != null) {
+                    velocidadesPrevias.add(moverDK.getVelocidad());
+                }
+            } else if (this == moverDK) {
+                if (moverPeach != null) {
+                    velocidadesPrevias.add(moverPeach.getVelocidad());
+                }
+                if (moverYoshi != null) {
+                    velocidadesPrevias.add(moverYoshi.getVelocidad());
+                }
+                if (moverMario != null) {
+                    velocidadesPrevias.add(moverMario.getVelocidad());
+                }
+            }
+
+            return velocidadesPrevias;
+        }
+
+        public double getVelocidad() {
+            return velocidad;
+        }
+    }
+
+    public void cronometro() {
+        if (inicio == true) {
+            System.out.println("inicia cromonemtro");
+            Cronometro crono = new Cronometro(tiempo);
+            crono.start();
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BanderaD;
     private javax.swing.JLabel Bandera_Iz;
@@ -276,11 +456,9 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     private javax.swing.JLabel Pista4;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel Yoshi;
-    private javax.swing.JButton ini;
     private javax.swing.JButton jBStart;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
