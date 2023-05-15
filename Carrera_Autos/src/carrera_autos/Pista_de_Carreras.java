@@ -303,14 +303,14 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
                     // Actualizar la posición según la velocidad actual
                     posX += velocidad;
                     label.setLocation((int) posX, (int) posY);
-                    
+
                     // Repintar el label para mostrar su nueva posición
                     label.repaint();
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
             }
-            
+
             // Mostrar el mensaje indicando qué label llegó primero
             synchronized (ordenLlegada) {
                 ordenLlegada.add(nombre);
@@ -333,12 +333,17 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
                         break;
                 }
                 mensaje.append(posicion).append(". ").append(ordenLlegada.get(i)).append("\n");
+                if (proceso == true) {
+                    inicio = false;
+                    proceso = false;
+                }
             }
             Peach.setLocation(85, 110);
             Yoshi.setLocation(85, 210);
             Mario.setLocation(85, 310);
             DK.setLocation(85, 410);
             JOptionPane.showMessageDialog(rootPane, mensaje.toString());
+
         }
 
         private double generarVelocidad() {
