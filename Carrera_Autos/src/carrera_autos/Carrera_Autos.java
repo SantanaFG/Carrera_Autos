@@ -21,8 +21,8 @@ public class Carrera_Autos extends Thread {
     private String nombre;
     private JLabel etiqueta;
     private Pista_de_Carreras auto;
-    private boolean iterar;
-    private boolean iterar1;
+    private boolean iteracion;
+    private boolean iteracion2;
     Cronometro n = new Cronometro(Pista_de_Carreras.tiempo);
     Autopodio a1 = new Autopodio();
 
@@ -34,12 +34,12 @@ public class Carrera_Autos extends Thread {
 
     }
 
-    public boolean isIterar() {
-        return iterar;
+    public boolean isIteracion() {
+        return iteracion;
     }
 
-    public void setIterar(boolean iterar) {
-        this.iterar = iterar;
+    public void setIteracion(boolean iterar) {
+        this.iteracion = iterar;
     }
 
     public Carrera_Autos() {
@@ -62,7 +62,7 @@ public class Carrera_Autos extends Thread {
         int auto4 = 0;
         double posX = etiqueta.getLocation().getX();
         double posY = etiqueta.getLocation().getY();
-        while (iterar && posX < 800) {
+        while (iteracion && posX < 800) {
 
             try {
                 sleep((int) (Math.random() * 40));
@@ -81,7 +81,7 @@ public class Carrera_Autos extends Thread {
 
         }
 
-        if (iterar1 == true) {
+        if (iteracion2 == true) {
 
             synchronized (ordenLlegada) {
                 a1.setNombre(nombre);
@@ -108,23 +108,23 @@ public class Carrera_Autos extends Thread {
 
     }
 
-    public void star1() {
-        iterar = true;
-        iterar1 = true;
+    public void Inicio() {
+        iteracion = true;
+        iteracion2 = true;
         new Thread(this).start();
 
     }
 
-    public void star2() {
-        iterar = false;
-        iterar1 = false;
+    public void Proceso() {
+        iteracion = false;
+        iteracion2 = false;
         Pista_de_Carreras.inicio = true;
         Pista_de_Carreras.proceso = false;
     }
 
     public void renaudar() {
-        iterar = true;
-        iterar1 = true;
+        iteracion = true;
+        iteracion2 = true;
         new Thread(this).start();
 
     }

@@ -24,11 +24,11 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     /**
      * Creates new form Pista_de_Carreras
      */
-    Cronometro c7;
-    Carrera_Autos c1;
-    Carrera_Autos c2;
-    Carrera_Autos c3;
-    Carrera_Autos c4;
+    Cronometro cronome;
+    Carrera_Autos mar;
+    Carrera_Autos prin;
+    Carrera_Autos yosh;
+    Carrera_Autos mono;
     static boolean inicio = false;
     static boolean proceso = false;
     static int horas = 0, minutos = 0, segundo = 0;
@@ -42,11 +42,11 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         jInternalFrame1.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.jInternalFrame1.getUI();
         bui.setNorthPane(null);
-        c2 = new Carrera_Autos(Peach, this, ordenLlegada, "Peach");
-        c1 = new Carrera_Autos(Yoshi, this, ordenLlegada, "Yoshi");
-        c3 = new Carrera_Autos(Mario, this, ordenLlegada, "Mario");
-        c4 = new Carrera_Autos(DK, this, ordenLlegada, "Donkey Kong");
-        c7 = new Cronometro(tiempo);
+        prin = new Carrera_Autos(Peach, this, ordenLlegada, "Peach");
+        yosh = new Carrera_Autos(Yoshi, this, ordenLlegada, "Yoshi");
+        mar = new Carrera_Autos(Mario, this, ordenLlegada, "Mario");
+        mono = new Carrera_Autos(DK, this, ordenLlegada, "Donkey Kong");
+        cronome = new Cronometro(tiempo);
     }
 
     public JLabel getPeach() {
@@ -66,11 +66,11 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     }
 
     public void parar() {
-        c1.star2();
-        c2.star2();
-        c3.star2();
-        c4.star2();
-        c7.parar();
+        prin.Proceso();
+        yosh.Proceso();
+        mar.Proceso();
+        mono.Proceso();
+        cronome.parar();
         proceso = false;
     }
 
@@ -242,12 +242,12 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     private void jBStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBStartActionPerformed
         pausar.setEnabled(true);
         ordenLlegada.clear();
-        c7.iniciar();
+        cronome.iniciar();
         if (inicio == false) {
-            c1.star1();
-            c2.star1();
-            c3.star1();
-            c4.star1();
+            prin.Inicio();
+            yosh.Inicio();
+            mar.Inicio();
+            mono.Inicio();
             inicio = true;
         }
     }//GEN-LAST:event_jBStartActionPerformed
@@ -255,11 +255,11 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     private void reanudarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reanudarActionPerformed
         // TODO add your handling code here:
         if (proceso == false) {
-            c1.renaudar();
-            c3.renaudar();
-            c4.renaudar();
-            c2.renaudar();
-            c7.iniciar();
+            prin.renaudar();
+            yosh.renaudar();
+            mar.renaudar();
+            mono.renaudar();
+            cronome.iniciar();
             proceso = true;
         }
     }//GEN-LAST:event_reanudarActionPerformed
