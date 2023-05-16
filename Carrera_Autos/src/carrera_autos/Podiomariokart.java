@@ -114,6 +114,8 @@ public class Podiomariokart extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        panelRect1.setColorPrimario(new java.awt.Color(255, 255, 102));
+        panelRect1.setColorSecundario(new java.awt.Color(51, 0, 0));
         panelRect1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panelRect1.add(panelCurves1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 383, 480, 100));
 
@@ -132,11 +134,11 @@ public class Podiomariokart extends javax.swing.JFrame {
         panelRect1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 114, 70, 70));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        panelRect1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 90, 80));
+        panelRect1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 90, 80));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("COPA");
-        panelRect1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/copa.png"))); // NOI18N
+        panelRect1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 120, 90));
 
         time1.setForeground(new java.awt.Color(255, 255, 255));
         time1.setText("Tiempo1");
