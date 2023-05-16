@@ -68,7 +68,7 @@ public class Podiomariokart extends javax.swing.JFrame {
             return yoshii;
         } else if (nombre.equalsIgnoreCase("MARIO")) {
             return marioo;
-        } else if (nombre.equalsIgnoreCase("DONKEY")) {
+        } else if (nombre.equalsIgnoreCase("DONKEY KONG")) {
             return mono;
         }
         return null;
@@ -95,9 +95,9 @@ public class Podiomariokart extends javax.swing.JFrame {
 
         panelRect1 = new org.edisoncor.gui.panel.PanelRect();
         panelCurves1 = new org.edisoncor.gui.panel.PanelCurves();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -117,6 +117,9 @@ public class Podiomariokart extends javax.swing.JFrame {
         panelRect1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panelRect1.add(panelCurves1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 383, 480, 100));
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        panelRect1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 70, 70));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("CONGRATULATIONS");
@@ -125,14 +128,11 @@ public class Podiomariokart extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PODIO-removebg-preview.png"))); // NOI18N
         panelRect1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 300, 120));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        panelRect1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 114, 70, 70));
-
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         panelRect1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 114, 70, 70));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        panelRect1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 70, 60));
+        panelRect1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 90, 80));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("COPA");
