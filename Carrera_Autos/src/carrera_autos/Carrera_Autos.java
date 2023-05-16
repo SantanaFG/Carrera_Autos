@@ -103,9 +103,7 @@ public class Carrera_Autos extends Thread {
                 n.reiniciar();
                 Pista_de_Carreras.inicio = false;
             }
-
         }
-
     }
 
     public void star1() {

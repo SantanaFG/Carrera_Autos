@@ -30,6 +30,9 @@ public class Podiomariokart extends javax.swing.JFrame {
         ImageIcon peach = createImageIcon("/Images/peach1.png");
         ImageIcon yoshii = createImageIcon("/Images/Yoshipng.png");
         ImageIcon mono = createImageIcon("/Images/dkey.png");
+        ImageIcon copa = createImageIcon("/Images/copa.png");
+        
+        jLCopa.setIcon(copa);
 
         if (Carrera_Autos.ordenLlegada.size() == 4) {
             for (int i = 0; i < Carrera_Autos.ordenLlegada.size(); i++) {
@@ -37,13 +40,13 @@ public class Podiomariokart extends javax.swing.JFrame {
 
                 switch (i) {
                     case 0:
-                        setIconAndText(jLabel5, jLabel11, time1, Carrera_Autos.ordenLlegada.get(i), peach, yoshii, marioo, mono);
+                        setIconAndText(jLGanador1, jLabel11, time1, Carrera_Autos.ordenLlegada.get(i), peach, yoshii, marioo, mono);
                         break;
                     case 1:
-                        setIconAndText(jLabel4, jLabel12, jLabel8, Carrera_Autos.ordenLlegada.get(i), peach, yoshii, marioo, mono);
+                        setIconAndText(jLGanador2, jLabel12, jLabel8, Carrera_Autos.ordenLlegada.get(i), peach, yoshii, marioo, mono);
                         break;
                     case 2:
-                        setIconAndText(jLabel2, jLabel13, jLabel9, Carrera_Autos.ordenLlegada.get(i), peach, yoshii, marioo, mono);
+                        setIconAndText(jLGanador3, jLabel13, jLabel9, Carrera_Autos.ordenLlegada.get(i), peach, yoshii, marioo, mono);
                         break;
                     case 3:
                         jLabel14.setText(Carrera_Autos.ordenLlegada.get(3).getNombre());
@@ -95,12 +98,12 @@ public class Podiomariokart extends javax.swing.JFrame {
 
         panelRect1 = new org.edisoncor.gui.panel.PanelRect();
         panelCurves1 = new org.edisoncor.gui.panel.PanelCurves();
-        jLabel2 = new javax.swing.JLabel();
+        jLGanador3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLGanador2 = new javax.swing.JLabel();
+        jLGanador1 = new javax.swing.JLabel();
+        jLCopa = new javax.swing.JLabel();
         time1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -117,8 +120,8 @@ public class Podiomariokart extends javax.swing.JFrame {
         panelRect1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panelRect1.add(panelCurves1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 383, 480, 100));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        panelRect1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 70, 70));
+        jLGanador3.setForeground(new java.awt.Color(255, 255, 255));
+        panelRect1.add(jLGanador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 70, 70));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,15 +131,15 @@ public class Podiomariokart extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PODIO-removebg-preview.png"))); // NOI18N
         panelRect1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 300, 120));
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        panelRect1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 114, 70, 70));
+        jLGanador2.setForeground(new java.awt.Color(255, 255, 255));
+        panelRect1.add(jLGanador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 114, 70, 70));
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        panelRect1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 90, 80));
+        jLGanador1.setForeground(new java.awt.Color(255, 255, 255));
+        jLGanador1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelRect1.add(jLGanador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 90, 80));
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("COPA");
-        panelRect1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        jLCopa.setForeground(new java.awt.Color(255, 255, 255));
+        panelRect1.add(jLCopa, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
         time1.setForeground(new java.awt.Color(255, 255, 255));
         time1.setText("Tiempo1");
@@ -241,17 +244,17 @@ public class Podiomariokart extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLCopa;
+    private javax.swing.JLabel jLGanador1;
+    private javax.swing.JLabel jLGanador2;
+    private javax.swing.JLabel jLGanador3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
