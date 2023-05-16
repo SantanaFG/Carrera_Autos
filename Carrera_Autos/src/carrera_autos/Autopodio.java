@@ -5,14 +5,9 @@
  */
 package carrera_autos;
 
-/**
- *
- * @author Edisson Leon
- */
 public class Autopodio {
 
-    private String nombre;
-    private String Tiempo;
+    private String nombre, Tiempo;
 
     public Autopodio(String nombre, String Tiempo) {
         this.nombre = nombre;

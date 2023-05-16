@@ -5,18 +5,11 @@
  */
 package carrera_autos;
 
-import java.awt.Image;
-import java.net.URL;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.net.URL;
 import javax.swing.JLabel;
 import carrera_autos.Autopodio;
 
-/**
- *
- * @author Edisson Leon
- */
 public class Podiomariokart extends javax.swing.JFrame {
 
     /**

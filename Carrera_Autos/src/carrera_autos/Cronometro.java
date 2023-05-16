@@ -9,10 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 
-/**
- *
- * @author Joseline
- */
 public class Cronometro extends Thread {
 
     JLabel tiempo;
@@ -31,13 +27,10 @@ public class Cronometro extends Thread {
             try {
                 Thread.sleep(100);
                 ejecutar(x);
-
                 x++;
-
             } catch (InterruptedException ex) {
                 Logger.getLogger(Cronometro.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
     }
 
@@ -50,8 +43,7 @@ public class Cronometro extends Thread {
             Pista_de_Carreras.minutos++;
         }
 
-        String seg;
-        String min;
+        String seg, min;
 
         if (Pista_de_Carreras.segundo < 10) {
             seg = "0" + Pista_de_Carreras.segundo;
@@ -67,7 +59,6 @@ public class Cronometro extends Thread {
         String crono = min + ": " + seg;
 
         tiempo.setText(crono);
-
     }
 
     public void iniciar() {

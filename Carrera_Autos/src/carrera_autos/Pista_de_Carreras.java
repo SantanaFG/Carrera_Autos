@@ -8,23 +8,16 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
-/**
- *
- * @author DELL
- */
 public class Pista_de_Carreras extends javax.swing.JFrame {
 
     /**
      * Creates new form Pista_de_Carreras
      */
     Cronometro cronome;
-    Carrera_Autos mar;
-    Carrera_Autos prin;
-    Carrera_Autos yosh;
-    Carrera_Autos mono;
+    Carrera_Autos mar, prin, yosh, mono;
     static boolean inicio = false;
     static boolean proceso = false;
-    static int horas = 0, minutos = 0, segundo = 0;
+    static int minutos = 0, segundo = 0;
     ArrayList<Autopodio> ordenLlegada = new ArrayList<>();    
     public Pista_de_Carreras() {
         initComponents();
@@ -68,7 +61,6 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
 
     public void reiniciar() {
         Pista_de_Carreras.segundo = 0;
-        Pista_de_Carreras.horas = 0;
         Pista_de_Carreras.minutos = 0;
     }
 

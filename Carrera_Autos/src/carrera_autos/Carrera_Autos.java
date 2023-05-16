@@ -9,20 +9,14 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author DELL
- */
 public class Carrera_Autos extends Thread {
 
     static ArrayList<Autopodio> ordenLlegada;
     private String nombre;
     private JLabel etiqueta;
     private Pista_de_Carreras auto;
-    private boolean iteracion;
-    private boolean iteracion2;
+    private boolean iteracion, iteracion2;
     Cronometro n = new Cronometro(Pista_de_Carreras.tiempo);
     Autopodio a1 = new Autopodio();
 
@@ -56,10 +50,7 @@ public class Carrera_Autos extends Thread {
     @Override
     public void run() {
 
-        int auto1 = 0;
-        int auto2 = 0;
-        int auto3 = 0;
-        int auto4 = 0;
+        int auto1 = 0, auto2 = 0, auto3 = 0, auto4 = 0;
         double posX = etiqueta.getLocation().getX();
         double posY = etiqueta.getLocation().getY();
         while (iteracion && posX < 800) {
@@ -78,7 +69,6 @@ public class Carrera_Autos extends Thread {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Carrera_Autos.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
 
         if (iteracion2 == true) {
@@ -110,7 +100,6 @@ public class Carrera_Autos extends Thread {
         iteracion = true;
         iteracion2 = true;
         new Thread(this).start();
-
     }
 
     public void Proceso() {
@@ -124,6 +113,5 @@ public class Carrera_Autos extends Thread {
         iteracion = true;
         iteracion2 = true;
         new Thread(this).start();
-
     }
 }
