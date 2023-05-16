@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -23,25 +24,29 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     /**
      * Creates new form Pista_de_Carreras
      */
-    private Timer timer; // OBJETO DE TIMER PARA ACTUALIZAR EL TIEMPO
-    private long startTime; // VARIABLE DE TIPO LONG PARA GUARDAR EL TIEMPO DE INICIO
-    private long tiempoTranscurrido;// VARIABLE DE TIPO LONG PARA GUARDAR EL TIEMPO TRANSCURRIDO
-    private Thread cronometroThread;
-    private MoverLabel moverPeach;
-    private MoverLabel moverYoshi;
-    private MoverLabel moverMario;
-    private MoverLabel moverDK;
-
-    static int hora = 0, minutos = 0, segundo = 0, milise = 0;
-    static boolean inicio = true;
-    boolean proceso = false;
+    Cronometro c7;
+    Carrera_Autos c1;
+    Carrera_Autos c2;
+    Carrera_Autos c3;
+    Carrera_Autos c4;
+    static boolean inicio = false;
+    static boolean proceso = false;
+    static int horas = 0, minutos = 0, segundo = 0;
+    ArrayList<Autopodio> ordenLlegada = new ArrayList<>();
 
     public Pista_de_Carreras() {
         initComponents();
+        pausar.setEnabled(false);
+        reanudar.setEnabled(false);
+        setLocationRelativeTo(null);
         jInternalFrame1.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.jInternalFrame1.getUI();
         bui.setNorthPane(null);
-        setLocationRelativeTo(this);
+        c2 = new Carrera_Autos(Peach, this, ordenLlegada, "Peach");
+        c1 = new Carrera_Autos(Yoshi, this, ordenLlegada, "Yoshi");
+        c3 = new Carrera_Autos(Mario, this, ordenLlegada, "Mario");
+        c4 = new Carrera_Autos(DK, this, ordenLlegada, "Donkey Kong");
+        c7 = new Cronometro(tiempo);
     }
 
     public JLabel getPeach() {
@@ -56,17 +61,22 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         return Mario;
     }
 
-    public JLabel getDK() {
+    public JLabel getDkong() {
         return DK;
     }
 
-    public JLabel getMeta() {
-        return Meta;
+    public void parar() {
+        c1.star2();
+        c2.star2();
+        c3.star2();
+        c4.star2();
+        c7.parar();
+        proceso = false;
     }
 
     public void reiniciar() {
         Pista_de_Carreras.segundo = 0;
-        Pista_de_Carreras.hora = 0;
+        Pista_de_Carreras.horas = 0;
         Pista_de_Carreras.minutos = 0;
     }
 
@@ -92,13 +102,16 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         Pista3 = new javax.swing.JLabel();
         Pista4 = new javax.swing.JLabel();
         jBStart = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        pausar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         tiempo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        reanudar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Carrera de Autos");
@@ -150,15 +163,15 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
                 jBStartActionPerformed(evt);
             }
         });
-        getContentPane().add(jBStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 520, -1, -1));
+        getContentPane().add(jBStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, 80, -1));
 
-        jButton2.setText("PAUSE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        pausar.setText("PAUSE");
+        pausar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                pausarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 520, -1, -1));
+        getContentPane().add(pausar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/peach.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 80, 80));
@@ -175,53 +188,86 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
         jInternalFrame1.setVisible(true);
 
         tiempo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        tiempo.setText("jLabel6");
+
+        jLabel5.setText("TIME:");
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 60));
+        getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 80));
+
+        reanudar.setText("REANUDAR");
+        reanudar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reanudarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(reanudar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, -1, -1));
+
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void pausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pausarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        parar();
+        reanudar.setEnabled(true);
+    }//GEN-LAST:event_pausarActionPerformed
 
     private void jBStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBStartActionPerformed
-        ArrayList<String> ordenLlegada = new ArrayList<>();
-        reiniciar();
-        moverPeach = new MoverLabel(Peach, "Peach", ordenLlegada);
-        moverYoshi = new MoverLabel(Yoshi, "Yoshi", ordenLlegada);
-        moverMario = new MoverLabel(Mario, "Mario", ordenLlegada);
-        moverDK = new MoverLabel(DK, "Don Ko", ordenLlegada);
-
-        Thread threadPeach = new Thread(moverPeach);
-        Thread threadYoshi = new Thread(moverYoshi);
-        Thread threadMario = new Thread(moverMario);
-        Thread threadDK = new Thread(moverDK);
-
-//         //Iniciar los hilos
-        threadPeach.start();
-        threadYoshi.start();
-        threadMario.start();
-        threadDK.start();
-        if (proceso == false) {
+        pausar.setEnabled(true);
+        ordenLlegada.clear();
+        c7.iniciar();
+        if (inicio == false) {
+            c1.star1();
+            c2.star1();
+            c3.star1();
+            c4.star1();
             inicio = true;
-            proceso = true;
-            cronometro();
         }
     }//GEN-LAST:event_jBStartActionPerformed
 
+    private void reanudarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reanudarActionPerformed
+        // TODO add your handling code here:
+        if (proceso == false) {
+            c1.renaudar();
+            c3.renaudar();
+            c4.renaudar();
+            c2.renaudar();
+            c7.iniciar();
+            proceso = true;
+        }
+    }//GEN-LAST:event_reanudarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -239,13 +285,17 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pista_de_Carreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pista_de_Carreras.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pista_de_Carreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pista_de_Carreras.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pista_de_Carreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pista_de_Carreras.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pista_de_Carreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pista_de_Carreras.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -271,172 +321,6 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
             }
         });
     }
-
-    private class MoverLabel implements Runnable {
-
-        private final JLabel label;
-        private double velocidad;
-        private String nombre;
-        private ArrayList<String> ordenLlegada;
-
-        public MoverLabel(JLabel label, String nombre, ArrayList<String> ordenLlegada) {
-            this.label = label;
-            this.nombre = nombre;
-            this.velocidad = generarVelocidad();
-            this.ordenLlegada = ordenLlegada;
-        }
-
-        @Override
-        public void run() {
-            double posX = label.getLocation().getX(); // Posición inicial en el eje X
-            double posY = label.getLocation().getY(); // Posición en el eje Y
-
-            double finalX = 800; // Valor final en el eje X
-
-            while (posX < finalX) {
-                try {
-                    Thread.sleep(10); // Ajusta el tiempo de espera según tus necesidades
-
-                    // Generar una velocidad aleatoria en cada iteración
-                    double velocidad = 0.5 + (3.5 - 0.5) * Math.random(); // Velocidad aleatoria entre 0.5 y 3.5
-
-                    // Actualizar la posición según la velocidad actual
-                    posX += velocidad;
-                    label.setLocation((int) posX, (int) posY);
-
-                    // Repintar el label para mostrar su nueva posición
-                    label.repaint();
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-            }
-
-            // Mostrar el mensaje indicando qué label llegó primero
-            synchronized (ordenLlegada) {
-                ordenLlegada.add(nombre);
-            }
-            StringBuilder mensaje = new StringBuilder();
-            for (int i = 0; i < ordenLlegada.size(); i++) {
-                String posicion;
-                switch (i + 1) {
-                    case 1:
-                        posicion = "1st";
-                        break;
-                    case 2:
-                        posicion = "2nd";
-                        break;
-                    case 3:
-                        posicion = "3rd";
-                        break;
-                    default:
-                        posicion = (i + 1) + "th";
-                        break;
-                }
-                mensaje.append(posicion).append(". ").append(ordenLlegada.get(i)).append("\n");
-                if (proceso == true) {
-                    inicio = false;
-                    proceso = false;
-                }
-            }
-            Peach.setLocation(85, 110);
-            Yoshi.setLocation(85, 210);
-            Mario.setLocation(85, 310);
-            DK.setLocation(85, 410);
-            JOptionPane.showMessageDialog(rootPane, mensaje.toString());
-
-        }
-
-        private double generarVelocidad() {
-            double velocidad;
-            HashSet<Double> velocidadesPrevias = obtenerVelocidadesPrevias();
-
-            do {
-                velocidad = 0.5 + (2.5 - 0.5) * new Random().nextDouble(); // Velocidad aleatoria entre 0.5 y 2.5
-            } while (velocidadesPrevias.contains(velocidad) || existeVelocidadRepetida(velocidad));
-
-            return velocidad;
-        }
-
-        private boolean existeVelocidadRepetida(double velocidad) {
-            int count = 0;
-
-            if (moverPeach != null && moverPeach.getVelocidad() == velocidad) {
-                count++;
-            }
-            if (moverYoshi != null && moverYoshi.getVelocidad() == velocidad) {
-                count++;
-            }
-            if (moverMario != null && moverMario.getVelocidad() == velocidad) {
-                count++;
-            }
-            if (moverDK != null && moverDK.getVelocidad() == velocidad) {
-                count++;
-            }
-
-            return count > 1;
-        }
-
-        private HashSet<Double> obtenerVelocidadesPrevias() {
-            HashSet<Double> velocidadesPrevias = new HashSet<>();
-
-            if (this == moverPeach) {
-                if (moverYoshi != null) {
-                    velocidadesPrevias.add(moverYoshi.getVelocidad());
-                }
-                if (moverMario != null) {
-                    velocidadesPrevias.add(moverMario.getVelocidad());
-                }
-                if (moverDK != null) {
-                    velocidadesPrevias.add(moverDK.getVelocidad());
-                }
-            } else if (this == moverYoshi) {
-                if (moverPeach != null) {
-                    velocidadesPrevias.add(moverPeach.getVelocidad());
-                }
-                if (moverMario != null) {
-                    velocidadesPrevias.add(moverMario.getVelocidad());
-                }
-                if (moverDK != null) {
-                    velocidadesPrevias.add(moverDK.getVelocidad());
-                }
-            } else if (this == moverMario) {
-                if (moverPeach != null) {
-                    velocidadesPrevias.add(moverPeach.getVelocidad());
-                }
-                if (moverYoshi != null) {
-                    velocidadesPrevias.add(moverYoshi.getVelocidad());
-                }
-                if (moverDK != null) {
-                    velocidadesPrevias.add(moverDK.getVelocidad());
-                }
-            } else if (this == moverDK) {
-                if (moverPeach != null) {
-                    velocidadesPrevias.add(moverPeach.getVelocidad());
-                }
-                if (moverYoshi != null) {
-                    velocidadesPrevias.add(moverYoshi.getVelocidad());
-                }
-                if (moverMario != null) {
-                    velocidadesPrevias.add(moverMario.getVelocidad());
-                }
-            }
-
-            return velocidadesPrevias;
-        }
-
-        public double getVelocidad() {
-            return velocidad;
-        }
-    }
-
-    public void cronometro() {
-        if (inicio == true) {
-            System.out.println("inicia cromonemtro");
-            Cronometro crono = new Cronometro(tiempo);
-            crono.start();
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BanderaD;
     private javax.swing.JLabel Bandera_Iz;
@@ -451,12 +335,15 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel Yoshi;
     private javax.swing.JButton jBStart;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel tiempo;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton pausar;
+    private javax.swing.JButton reanudar;
+    public static javax.swing.JLabel tiempo;
     // End of variables declaration//GEN-END:variables
 }

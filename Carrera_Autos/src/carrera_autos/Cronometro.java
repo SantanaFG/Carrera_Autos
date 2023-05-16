@@ -11,65 +11,81 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author Edisson Leon
+ * @author Joseline
  */
 public class Cronometro extends Thread {
 
-    JLabel cron;
+    JLabel tiempo;
+    static boolean iterar;
+    static boolean corre = false;
+    int x = 0;
 
     public Cronometro(JLabel tiempo) {
-        this.cron = tiempo;
+        this.tiempo = tiempo;
     }
 
-    public void run() {      
-        int x = 0;
-        try {
-            do {
+    @Override
+    public void run() {
+
+        while (iterar) {
+            try {
                 Thread.sleep(100);
-                ejecutarcronometro(x);
+                ejecutar(x);
+
                 x++;
-            } while (Pista_de_Carreras.inicio);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Cronometro.class.getName()).log(Level.SEVERE, null, ex);
+
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Cronometro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
     }
 
-    public void ejecutarcronometro(int x) {
+    public void ejecutar(int x) {
 
         Pista_de_Carreras.segundo++;
+
         if (Pista_de_Carreras.segundo > 59) {
             Pista_de_Carreras.segundo = 0;
             Pista_de_Carreras.minutos++;
         }
-        if (Pista_de_Carreras.minutos > 59) {
-            Pista_de_Carreras.minutos = 0;
-            Pista_de_Carreras.hora++;
+
+        String seg;
+        String min;
+
+        if (Pista_de_Carreras.segundo < 10) {
+            seg = "0" + Pista_de_Carreras.segundo;
+        } else {
+            seg = "" + Pista_de_Carreras.segundo;
         }
 
-        String txtse = "", txtmin = "", txthora = "";
-        if (Pista_de_Carreras.segundo < 10) {
-            txtse = "0" + Pista_de_Carreras.segundo;
-        } else {
-            txtse = "" + Pista_de_Carreras.segundo;
-        }
         if (Pista_de_Carreras.minutos < 10) {
-            txtmin = "0" + Pista_de_Carreras.minutos;
+            min = "0" + Pista_de_Carreras.minutos;
         } else {
-            txtmin = "" + Pista_de_Carreras.minutos;
+            min = "" + Pista_de_Carreras.minutos;
         }
-        if (Pista_de_Carreras.hora < 10) {
-            txthora = "0" + Pista_de_Carreras.hora;
-        } else {
-            txthora = "" + Pista_de_Carreras.hora;
+        String crono = min + ": " + seg;
+
+        tiempo.setText(crono);
+
+    }
+
+    public void iniciar() {
+        if (corre == false) {
+            Cronometro.iterar = true;
+            corre = true;
+            new Thread(this).start();
         }
-        String reloj = txthora + ":" + txtmin + ":" + txtse + "";
-        cron.setText(reloj);
-        System.out.println(x + " - " + Thread.currentThread().getName());
+    }
+
+    public void parar() {
+        iterar = false;
+        corre = false;
     }
 
     public void reiniciar() {
-        Pista_de_Carreras.segundo=0;
-        Pista_de_Carreras.hora = 0;
-        Pista_de_Carreras.minutos=0;
+        x = 0;
+        Pista_de_Carreras.segundo = 0;
+        Pista_de_Carreras.minutos = 0;
     }
 }
