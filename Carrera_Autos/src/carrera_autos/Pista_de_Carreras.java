@@ -4,16 +4,9 @@
  */
 package carrera_autos;
 
-import java.awt.List;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Random;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -32,8 +25,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
     static boolean inicio = false;
     static boolean proceso = false;
     static int horas = 0, minutos = 0, segundo = 0;
-    ArrayList<Autopodio> ordenLlegada = new ArrayList<>();
-
+    ArrayList<Autopodio> ordenLlegada = new ArrayList<>();    
     public Pista_de_Carreras() {
         initComponents();
         pausar.setEnabled(false);
@@ -209,7 +201,7 @@ public class Pista_de_Carreras extends javax.swing.JFrame {
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(tiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 80));
